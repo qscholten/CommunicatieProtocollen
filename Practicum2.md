@@ -1,73 +1,48 @@
-# Practicum 3
-## Qing Scholten
-1. 
-```
-Explicit Addressing Command Frame (API 1)
+# Practicum 2 - Communicatie protocollen
+## Qing Scholten (20208294)
+---
+1. Alleen hetgeen gezonden zou moeten worden.
+2. Zowel hetgeen gezonden zou moeten worden als hetgeen ontvangen is van de ZED of ZC. Dit komt omdat de ZED wakker is.
+3. ZED zowel wat gezonden zou moeten worden als wat ontvangen zou moeten worden. ZC enkel wat gezonden zou moeten worden. Dit komt omdat de sleeptime van de ZC 28 seconden is, wat de buffering time is en aangezien de ZED binnen de 28 seconden aangezet is komt het bericht binnen. De ZED is in slaap dus transmit niks.
+4. ST = wake time
+5. Omdat de SP op de ZC op 320 ms staat terwijl de ZED enkel een keer in de 10 seconden aankomt. Door de SP op de ZC aan te passen naar 10 seconden of hoger, komt het bericht wel aan. Door de SP op de ZED naar kleiner te zetten dan de ZC komt het bericht ook aan.
+6. XCTU Channel 7 (Zigbee kanaal 18) en Channel 15 (Zigbee kanaal 26). 
+7. XCTU Channel 7/Zigbee kanaal 18 want minste ruis en hoogste avarage.
 
-7E 00 16 11 5C 00 13 A2 00 41 92 98 20 FF FE 00 00 00 31 00 00 00 00 5C 00 C8
+![alt text](image.png)
+![alt text](image-1.png)
 
-Start delimiter: 7E
-Length: 00 16 (22)
-Frame type: 11 (Explicit Addressing Command Frame)
-Frame ID: 5C (92)
-64-bit dest. address: 00 13 A2 00 41 92 98 20
-16-bit dest. address: FF FE
-Source endpoint: 00
-Dest. endpoint: 00
-Cluster ID: 00 31
-Profile ID: 00 00
-Broadcast radius: 00 (0)
-Transmit options: 00
-RF data (HEX): 5C 00
-RF data (ASCII): \
-```
-2. De RF data is veranderd.
-```
-Explicit Addressing Command Frame (API 1)
+8.
 
-7E 00 16 11 8C 00 13 A2 00 41 92 98 20 FF FE 00 00 00 31 00 00 00 00 8C 00 68
+   a) 0x0E
 
-Start delimiter: 7E
-Length: 00 16 (22)
-Frame type: 11 (Explicit Addressing Command Frame)
-Frame ID: 8C (140)
-64-bit dest. address: 00 13 A2 00 41 92 98 20
-16-bit dest. address: FF FE
-Source endpoint: 00
-Dest. endpoint: 00
-Cluster ID: 00 31
-Profile ID: 00 00
-Broadcast radius: 00 (0)
-Transmit options: 00
-RF data (HEX): 8C 00
-RF data (ASCII): Œ
-```
-3. AT commando is D2 (ASCII) en parameter value is 05 (HEX)
-4.
+   b) atch
+   
+9.
 
-```
-Remote AT Command Request (API 1)
+    a) 13 dbm en 19.95 mW
 
-7E 00 10 17 01 00 13 A2 00 41 92 98 20 FF FE 02 44 32 04 2E
+    b) atpp
 
-Start delimiter: 7E
-Length: 00 10 (16)
-Frame type: 17 (Remote AT Command Request)
-Frame ID: 01 (1)
-64-bit dest. address: 00 13 A2 00 41 92 98 20
-16-bit dest. address: FF FE
-Command options: 02
-AT Command: 44 32 (D2)
-Parameter: 04
-Checksum: 2E
-```
-5.
+    c) -5 dbm (0,32 mW), -1 dbm (0.79 mW), 2 dbm (1.58 mW), 5 dbm (3.16 mW) en 8 dbm (6.31 mW)
 
-- SM (Sleep Mode) = 0x04
-- SP (sleep time) = 0x7D0
-- ST (wake time) = 0xFA
-- IR (IO Sampling Rate) = 0xC8
-- SO (Sleep options) = 0x01
 
-6. De ZED slaapt 20 seconden en ontvangt dan geen bericht en doet dan niks
-7. SP (Sleep Time) aanpassen naar 0x7D0 op de ZC wat gelijk is aan de SP op de ZED.
+10. 3200 m
+11. atpl 0
+12. 7FFF
+13. 8080
+14. 8080  
+15. 
+
+a) -19 dbm en -19 dbm
+
+b) -10 dbm en -10 dbm
+
+c) Als de antennes beide omhoog staan is de meetwaarde hoger. Zodra er een naar beneden staat is de RSSI waarde lager.
+
+d) Omhoog
+
+16. Lokaal 2069 -95 dbm
+17. 
+![alt text](image-2.png)
+18. Die zet je lager om batterij te besparen.
